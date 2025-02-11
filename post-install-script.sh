@@ -1,7 +1,11 @@
 #!/bin/bash
 
-source ./modules/logger.sh
-source ./modules/utils.sh
+export SETUP_DIR=$(dirname "$0")
+
+source $SETUP_DIR/modules/logger.sh
+source $SETUP_DIR/modules/utils.sh
+
+LOG_FILE="$SETUP_DIR/script.log"
 
 cat <<\EOF
    _____ _             _            
@@ -14,18 +18,17 @@ cat <<\EOF
                                     
 EOF
 
-log_info "Do you want to start setup? (y/N)"
-read -r choice
+read -r -p "Do you want to start setup? (y/N): " choice
+
+trap 'error_handler $LINENO' ERR
 
 if [[ $choice == "y" || $choice == "Y" ]]; then
   log_debug "Starting the setup..."
 
-  update-system || exit 1
-  setup_yay || exit 1
-  install_essentials || exit 1
-  setup_hyprland || exit 1
+  run_step setup_yay
+  run_step update_system 
+  run_step install_essentials 
+  run_step setup_hyprland
 
-  ./scripts/setup_config.sh
-else
-  exit 1
+  run_step ./scripts/setup_config.sh
 fi
