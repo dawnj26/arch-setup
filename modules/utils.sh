@@ -1,27 +1,42 @@
-setup_directory=$(pwd)
+#!/bin/bash
 
 command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
+run_step() {
+  "$@"
+  if [[ $? -ne 0 ]]; then
+    log_error "Command '$*' failed"
+    exit 1
+  fi
+}
+
 setup_yay() {
-  log_info "Installing yay..."
+  log_info "Started setting up yay."
 
-  temp_dir=$(mktemp -d)
-  cd "$temp_dir" || log_error "Failed to create temporary directory"
+  log_debug "Creating to temporary directory..."
+  local temp_dir=$(mktemp -d)
+  cd $temp_dir 
 
+  log_debug "Cloning yay-bin..."
   sudo pacman -Syy --needed git base-devel
   git clone https://aur.archlinux.org/yay-bin.git
-  cd yay-bin || log_error "Cloning failed." && exit 1
-  makepkg -si || log_error "Failed to install yay." && exit 1
+  cd yay-bin
 
-  rm -rf "$temp_dir"
+  log_debug "Installing yay..."
+  makepkg -si
 
-  cd "$setup_directory" || log_error "Failed to cd on root setup directory." && exit 1
+  log_debug "Removing temp files..."
+  rm -rf $temp_dir
+
+  cd "$SETUP_DIR"
+
+  log_success "Installed yay successfully."
 }
 
 setup_hyprland() {
-  log_info "Installing hyprland..."
+  log_debug "Installing hyprland..."
 
   yay -S --needed --noconfirm \
     hyprland \
@@ -37,15 +52,36 @@ setup_hyprland() {
     hyprpicker \
     uwsm \
     xdg-desktop-portal-gtk \
-    xdg-desktop-portal-hyprland || log_error "Failed to install hyprland" && exit 1
+    xdg-desktop-portal-hyprland
+
+    log_success "Installed hyprland ecosystem successfully."
 }
 
 update_system() {
-  yay -Syyu --noconfirm --answerclean All --answerdiff None || log_error "System upgrade failed." && exit 1
+  log_debug "Updating system..."
+
+  yay -Syyu --noconfirm --answerclean All --answerdiff None
+  log_success "Updated successfully."
+}
+
+install_aur_packages() {
+  log_debug "Installing aur packages..."
+
+  yay -S --noconfirm --answerclean All --answerdiff None \
+  wayland-logout \
+  ttf-ms-win11-auto \
+  brave-bin \
+  visual-studio-code-bin \
+  shikane \
+  sddm-git \
+  vesktop-bin \
+  bibata-cursor-theme
+
+  log_success "Installed AUR packages successfully."
 }
 
 install_essentials() {
-  log_info "Installing essential packages..."
+  log_debug "Installing essential packages..."
 
   yay -S --noconfirm --answerclean All --answerdiff None \
     alacritty \
@@ -55,20 +91,16 @@ install_essentials() {
     rofi-wayland \
     waybar \
     wlogout \
-    wayland-logout \
-    ttf-ms-win11-auto \
     libreoffice-fresh \
     jdk17-openjdk \
     btop \
     network-manager-applet \
     polkit-gnome \
     nwg-look \
-    brave-bin \
     xorg-xhost \
     nautilus \
     eog \
     brightnessctl \
-    visual-studio-code-bin \
     7zip \
     bat \
     btop \
@@ -85,22 +117,20 @@ install_essentials() {
     os-prober \
     qbittorrent \
     rustup \
-    shikane \
-    sddm-git \
     stow \
     unrar \
     unzip \
-    vesktop-bin \
     wl-clipboard \
     zip \
     zoxide \
     yazi \
-    bibata-cursor-theme \
     qt6-svg \
     qt6-declarative \
     qt5-quickcontrols2 \
     inter-font \
     gtk-engine-murrine \
     sassc \
-    zsh || log_error "Failed to install essential packages" && exit 1
+    zsh
+
+    log_success "Installed essential packages successfully."
 }
