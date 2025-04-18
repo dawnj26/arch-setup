@@ -93,7 +93,7 @@ install_essentials() {
     wlogout \
     libreoffice-fresh \
     mariadb \
-    jdk17-openjdk \
+    jdk21-openjdk \
     btop \
     network-manager-applet \
     polkit-gnome \
@@ -147,8 +147,7 @@ install_essentials() {
     ttf-jetbrains-mono-nerd \
     ttf-iosevka-nerd \
     ttf-cascadia-code-nerd \
-    ttf-fantasque-nerd \
-    7-zip 
+    ttf-fantasque-nerd \ 
 
     log_success "Installed essential packages successfully."
 }
