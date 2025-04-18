@@ -22,7 +22,6 @@ for D in *; do stow $D; done
 cp chromium.conf "$HOME/.config/code-flags.conf"
 
 sudo systemctl enable sddm
-cp -r wallpapers/ "$HOME/Pictures/wallpapers"
 
 log_debug "Creating repos dir..."
 repos_dir="$HOME/repos"
