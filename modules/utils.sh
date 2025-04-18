@@ -67,7 +67,7 @@ update_system() {
 install_aur_packages() {
   log_debug "Installing aur packages..."
 
-  yay -S --noconfirm --answerclean All --answerdiff None \
+  yay -S --noconfirm --answerclean --needed All --answerdiff None \
   wayland-logout \
   ttf-ms-win11-auto \
   brave-bin \
@@ -83,7 +83,7 @@ install_aur_packages() {
 install_essentials() {
   log_debug "Installing essential packages..."
 
-  yay -S --noconfirm --answerclean All --answerdiff None \
+  yay -S --noconfirm --needed --answerclean All --answerdiff None \
     alacritty \
     kitty \
     mako \
@@ -92,16 +92,19 @@ install_essentials() {
     waybar \
     wlogout \
     libreoffice-fresh \
+    mariadb \
     jdk17-openjdk \
     btop \
     network-manager-applet \
     polkit-gnome \
+    gnome-keyring \
     nwg-look \
     xorg-xhost \
     nautilus \
     eog \
     brightnessctl \
     7zip \
+    github-cli \
     bat \
     btop \
     clang \
@@ -109,7 +112,6 @@ install_essentials() {
     grim \
     slurp \
     grub-customizer \
-    jdk17-openjdk \
     libnotify \
     mpv \
     nodejs \
@@ -130,7 +132,23 @@ install_essentials() {
     inter-font \
     gtk-engine-murrine \
     sassc \
-    zsh
+    zsh \
+    php \
+    httpd \
+    apache \
+    php-apache \
+    php-gd \
+    php-igbinary \
+    php-pgsql \
+    php-redis \
+    php-sqlite \
+    phpmyadmin \
+    composer \
+    ttf-jetbrains-mono-nerd \
+    ttf-iosevka-nerd \
+    ttf-cascadia-code-nerd \
+    ttf-fantasque-nerd \
+    7-zip 
 
     log_success "Installed essential packages successfully."
 }
