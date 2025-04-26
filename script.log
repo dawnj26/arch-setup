@@ -1,0 +1,49 @@
+[DEBUG] 2025-04-18 09:39:17: Starting the interactive setup...
+[INFO] 2025-04-18 09:39:17: Available setup steps:
+[INFO] 2025-04-18 09:39:28: Running step: setup_yay
+[INFO] 2025-04-18 09:39:28: Started setting up yay.
+[DEBUG] 2025-04-18 09:39:28: Creating to temporary directory...
+[DEBUG] 2025-04-18 09:39:58: Starting the interactive setup...
+[INFO] 2025-04-18 09:39:58: Available setup steps:
+[INFO] 2025-04-18 09:40:01: Running step: update_system
+[DEBUG] 2025-04-18 09:40:01: Updating system...
+[SUCCESS] 2025-04-18 09:40:05: Updated successfully.
+[INFO] 2025-04-18 09:40:05: Step 'update_system' finished.
+[INFO] 2025-04-18 09:40:09: Available setup steps:
+[INFO] 2025-04-18 09:40:12: Running step: install_essentials
+[DEBUG] 2025-04-18 09:40:12: Installing essential packages...
+[SUCCESS] 2025-04-18 09:40:34: Installed essential packages successfully.
+[INFO] 2025-04-18 09:40:34: Step 'install_essentials' finished.
+[INFO] 2025-04-18 09:40:40: Available setup steps:
+[DEBUG] 2025-04-18 09:41:50: Starting the interactive setup...
+[INFO] 2025-04-18 09:41:50: Available setup steps:
+[INFO] 2025-04-18 09:41:52: Running step: install_essentials
+[DEBUG] 2025-04-18 09:41:52: Installing essential packages...
+[SUCCESS] 2025-04-18 09:46:01: Installed essential packages successfully.
+[INFO] 2025-04-18 09:46:01: Step 'install_essentials' finished.
+[INFO] 2025-04-18 09:46:03: Available setup steps:
+[INFO] 2025-04-18 09:46:13: Running step: setup_hyprland
+[DEBUG] 2025-04-18 09:46:13: Installing hyprland...
+[SUCCESS] 2025-04-18 09:47:40: Installed hyprland ecosystem successfully.
+[INFO] 2025-04-18 09:47:40: Step 'setup_hyprland' finished.
+[INFO] 2025-04-18 09:47:50: Available setup steps:
+[INFO] 2025-04-18 09:47:54: Exiting setup.
+[DEBUG] 2025-04-18 09:57:29: Starting the interactive setup...
+[INFO] 2025-04-18 09:57:29: Available setup steps:
+[INFO] 2025-04-18 09:57:32: Running step: install_aur_packages
+[DEBUG] 2025-04-18 09:57:32: Installing aur packages...
+[DEBUG] 2025-04-18 09:58:10: Starting the interactive setup...
+[INFO] 2025-04-18 09:58:10: Available setup steps:
+[INFO] 2025-04-18 09:58:11: Running step: install_aur_packages
+[DEBUG] 2025-04-18 09:58:11: Installing aur packages...
+[SUCCESS] 2025-04-18 10:14:14: Installed AUR packages successfully.
+[INFO] 2025-04-18 10:14:14: Step 'install_aur_packages' finished.
+[INFO] 2025-04-18 10:14:20: Available setup steps:
+[INFO] 2025-04-18 10:14:22: Running step: ./scripts/setup_config.sh
+[ERROR] 2025-04-18 10:14:22: Command './scripts/setup_config.sh' failed
+[DEBUG] 2025-04-18 10:15:31: Starting the interactive setup...
+[INFO] 2025-04-18 10:15:31: Available setup steps:
+[INFO] 2025-04-18 10:15:36: Running step: ./scripts/setup_config.sh
+[INFO] 2025-04-18 10:16:15: Step './scripts/setup_config.sh' finished.
+[INFO] 2025-04-18 10:16:27: Available setup steps:
+[INFO] 2025-04-18 10:16:29: Exiting setup.

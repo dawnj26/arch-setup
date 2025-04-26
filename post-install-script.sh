@@ -23,6 +23,7 @@ declare -a steps=(
     "setup_yay"
     "update_system"
     "install_essentials"
+    "install_aur_packages"
     "setup_hyprland"
     "./scripts/setup_config.sh"
 )

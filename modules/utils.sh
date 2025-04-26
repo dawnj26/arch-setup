@@ -17,7 +17,7 @@ setup_yay() {
 
   log_debug "Creating to temporary directory..."
   local temp_dir=$(mktemp -d)
-  cd $temp_dir 
+  cd $temp_dir
 
   log_debug "Cloning yay-bin..."
   sudo pacman -Syy --needed git base-devel
@@ -38,7 +38,7 @@ setup_yay() {
 setup_hyprland() {
   log_debug "Installing hyprland..."
 
-  yay -S --needed --noconfirm \
+  yay -S --needed \
     hyprland \
     hyprgraphics \
     hyprcursor \
@@ -54,7 +54,7 @@ setup_hyprland() {
     xdg-desktop-portal-gtk \
     xdg-desktop-portal-hyprland
 
-    log_success "Installed hyprland ecosystem successfully."
+  log_success "Installed hyprland ecosystem successfully."
 }
 
 update_system() {
@@ -67,15 +67,15 @@ update_system() {
 install_aur_packages() {
   log_debug "Installing aur packages..."
 
-  yay -S --noconfirm --answerclean --needed All --answerdiff None \
-  wayland-logout \
-  ttf-ms-win11-auto \
-  brave-bin \
-  visual-studio-code-bin \
-  shikane \
-  sddm-git \
-  vesktop-bin \
-  bibata-cursor-theme
+  yay -S --needed --answerclean All --answerdiff None \
+    wayland-logout \
+    ttf-ms-win11-auto \
+    brave-bin \
+    visual-studio-code-bin \
+    shikane \
+    sddm-git \
+    vesktop-bin \
+    bibata-cursor-theme
 
   log_success "Installed AUR packages successfully."
 }
@@ -83,7 +83,7 @@ install_aur_packages() {
 install_essentials() {
   log_debug "Installing essential packages..."
 
-  yay -S --noconfirm --needed --answerclean All --answerdiff None \
+  yay -S --needed --answerclean All --answerdiff None \
     alacritty \
     kitty \
     mako \
@@ -147,7 +147,8 @@ install_essentials() {
     ttf-jetbrains-mono-nerd \
     ttf-iosevka-nerd \
     ttf-cascadia-code-nerd \
-    ttf-fantasque-nerd \ 
+    ttf-fantasque-nerd \
+    foot
 
-    log_success "Installed essential packages successfully."
+  log_success "Installed essential packages successfully."
 }
